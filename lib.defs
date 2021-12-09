@@ -1,0 +1,4 @@
+INCLUDE $HPEESOF_DIR/oalibs/analog_rf.defs
+INCLUDE $HPEESOF_DIR/oalibs/dsp.defs
+DEFINE cascodeamp_lib cascodeamp_lib
+ASSIGN cascodeamp_lib libMode shared

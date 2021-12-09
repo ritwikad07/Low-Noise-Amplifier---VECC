@@ -1,0 +1,46 @@
+; Top Design: "cascodeamp_lib:cascode:schematic"
+; Netlisted using Hierarchy Policy: "Standard"
+
+Options ResourceUsage=yes UseNutmegFormat=no EnableOptim=no TopDesignName="cascodeamp_lib:cascode:schematic" DcopOutputNodeVoltages=yes DcopOutputPinCurrents=yes DcopOutputAllSweepPoints=no DcopOutputDcopType=0
+mGND:mGND1  N__11 
+V_Source:SRC1  N__6 N__1 Type="V_AC" Vdc=0.0 V Vac=polar(1,0) V Freq=freq V_Noise=0 uV SaveCurrent=1 
+R:R8  Vout N__12 R=50 Ohm Noise=yes 
+R:R6  N__0 N__1 R=50 Ohm Noise=yes 
+R:R5  N__10 N__9 R=50 Ohm Noise=yes 
+R:R4  N__10 N__3 R=50 Ohm Noise=yes 
+R:R3  N__3 N__4 R=50 Ohm Noise=yes 
+R:R2  N__4 N__1 R=50 Ohm Noise=yes 
+R:R7  N__6 N__5 R=50 Ohm Noise=yes 
+C:C4  N__13 N__3 C=1.0 pF 
+C:C3  Vout N__9 C=1.0 pF 
+C:C2  N__0 N__1 C=1.0 pF 
+C:C1  N__5 N__4 C=1.0 pF 
+"BJTM1":BJT2  N__2 N__4 N__0 Mode=1 Noise=yes 
+"BJTM1":BJT1  N__9 N__3 N__2 Mode=1 Noise=yes 
+AC:AC1 CalcNoise=no SortNoise=0 IncludePortNoise=yes BandwidthForNoise=1 Hz FreqConversion=no UseFiniteDiff=no StatusLevel=2 OutputBudgetIV=no DevOpPtLevel=0 \
+SweepVar="freq" SweepPlan="AC1_stim" OutputPlan="AC1_Output" 
+
+SweepPlan: AC1_stim Start=1.0 GHz Stop=10.0 GHz Step=1.0 GHz 
+
+OutputPlan:AC1_Output \
+      Type="Output" \
+      UseNodeNestLevel=yes \
+      NodeNestLevel=2 \
+      UseEquationNestLevel=yes \
+      EquationNestLevel=2 \
+      UseSavedEquationNestLevel=yes \
+      SavedEquationNestLevel=2 \
+      UseDeviceCurrentNestLevel=no \
+      DeviceCurrentNestLevel=0 \
+      DeviceCurrentDeviceType="All" \
+      DeviceCurrentSymSyntax=yes \
+      UseCurrentNestLevel=yes \
+      CurrentNestLevel=999 \
+      UseDeviceVoltageNestLevel=no \
+      DeviceVoltageNestLevel=0 \
+      DeviceVoltageDeviceType="All"
+
+model BJTM1 BJT NPN=1 PNP=0 Lateral=0 RbModel=0 Approxqb=1 
+V_Source:SRC2  N__10 N__8 Type="V_DC" Vdc=5.0 V SaveCurrent=1 
+mGND:mGND3  N__12 
+mGND:mGND2  N__13 
